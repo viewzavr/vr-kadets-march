@@ -7,7 +7,7 @@ https://viewlang.ru/viewzavr-apps/vr-kadets-march/
 
 # licenses
 
-* The kadet's motion program is a property of Ekaterinburg Katers Corps.
+* The kadet's motion program is a property of Ekaterinburg Kadets Corps.
 * The model of soldier is from https://github.com/mrdoob/three.js/blob/dev/examples/models/gltf/Soldier.glb
 * The city are from https://github.com/KhronosGroup/glTF-Sample-Models
 * The step sound is a product of sound from https://freesound.org/
