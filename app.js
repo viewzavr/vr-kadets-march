@@ -6,6 +6,7 @@ var march = program( kadets );
 
 import * as konv from "./march2viewzavr.js";
 var obj = konv.convert( march, vz.root );
+//var obj = konv.convert_clones( march, vz.root );
 
 import snd from "./sounds/init.js";
 snd( obj );
