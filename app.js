@@ -19,3 +19,9 @@ obj.trackParam("T",function(){
 })
 
 vz.restoreFromHash();
+
+/////////////////////////////
+// thus this block is a feature; in contrast with snd, where snd is feature
+import timer from "./timer.js";
+//timer( obj, march );
+timer( obj,"T",1,kadets.get_duration(march),1.6 );
