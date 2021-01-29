@@ -12,6 +12,8 @@ export function convert( march,root ) {
    	  var stage = kadets.compute_stage( march, v );
    	  stage2gr( stage, pts );
    })
+   
+   obj.addCheckbox( "coloring",true,function() {} );
 
    // конвертирует состояние кадет в графические аттрибуты
    function stage2gr( stage, tgt ) {
@@ -30,10 +32,11 @@ export function convert( march,root ) {
      	anims.push( kadet.anim );
      }
      tgt.positions = positions;
-     tgt.colors = colors;
+     if (obj.getParam("coloring")) tgt.colors = colors;
+     
      tgt.rotations = rotations;
      tgt.animations_3 = anims;
-     tgt.refresh();
+     // tgt.refresh();
    }
 
    obj.setParam("T",0);
@@ -66,6 +69,8 @@ export function convert_clones( march,root ) {
    	  var stage = kadets.compute_stage( march, v );
    	  stage2gr( stage, pts );
    })
+   
+   obj.addCheckbox( "coloring",true,function() {} );
 
    // конвертирует состояние кадет в графические аттрибуты
    function stage2gr( stage, tgt ) {
@@ -84,7 +89,7 @@ export function convert_clones( march,root ) {
      	anims.push( kadet.anim );
      }
      tgt.positions = positions;
-     tgt.colors = colors;
+     if (obj.getParam("coloring")) tgt.colors = colors;
      tgt.rotations = rotations;
      tgt.animations_3 = anims;
    }
