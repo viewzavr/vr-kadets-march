@@ -1,5 +1,6 @@
 import * as kadets from "./kadets-march-library.js";
 
+// converts march object produced by `kadets-march-library` to a viewzavr visual object
 export function convert( march,root ) {
 
    //root.vz.create_obj( {} )

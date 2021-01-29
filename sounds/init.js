@@ -3,14 +3,15 @@ var file= dir + "snowstep1.mp3";
 
 export default function setup(obj) {
 
-obj.addCheckbox("audio-enabled",true,function(v) {
+obj.addSlider("steps-audio-volume",20,0,100,1,function(v) {
 });
 
 var animprev=[];
 var stepplaying={};
 obj.trackParam("T",function() {
   if (!obj.pts.animations_3) return;
-  if (!obj.getParam("audio-enabled")) return;
+  var vol = obj.getParam("steps-audio-volume") / 100.0;
+  if (vol == 0) return;
 
   var count = obj.pts.positions.length / 3;
   if (count == 0) return;
@@ -32,6 +33,7 @@ obj.trackParam("T",function() {
          var coords = [ obj.pts.positions[3*ii],obj.pts.positions[3*ii+1],obj.pts.positions[3*ii+2] ];
          stepplaying[ii] = true;
          vz.vis.playSound3d( coords, file,function(snd) {
+           snd.setVolume( vol ); //  console.log("vol",vol);
           //snd.play(-2);
           //snd.setPlaybackRate(1.5);
           /*
