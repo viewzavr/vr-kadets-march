@@ -1,11 +1,11 @@
 import * as kadets from "./kadets-march-library.js";
 
 // converts march object produced by `kadets-march-library` to a viewzavr visual object
-export function convert( march,root ) {
+export function convert( march,vz, parent ) {
 
    //root.vz.create_obj( {} )
-   var obj = root.vz.create_obj( {},{parent:root,name:"march"} );
-   var pts = root.vz.vis.addGltfArray( obj, "kadets" );
+   var obj = vz.create_obj( {},{parent:parent,name:"march"} );
+   var pts = vz.vis.addGltfArray( obj, "kadets" );
    pts.source = "models/Soldier.glb";
    obj.pts = pts;
 

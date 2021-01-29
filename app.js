@@ -1,11 +1,16 @@
 import * as kadets from "./kadets-march-library.js";
 import program from "./march2.js";
+import * as konv from "./march2viewzavr.js";
+import * as mus from "./music-march/init.js";
+import timer from "./timer.js";
+import snd from "./sounds/init.js";
+
+export function create( vz,opts ) {
 
 var march = program( kadets );
 //console.log("MARCH=",march);
 
-import * as konv from "./march2viewzavr.js";
-var obj = konv.convert( march, vz.root );
+var obj = konv.convert( march, vz, opts.parent );
 
 ///////////////// env city
 
@@ -19,19 +24,23 @@ obj.trackParam("T",function(){
 
 //////////////////
 // thus this block is a feature; in contrast with snd, where snd is feature
-import timer from "./timer.js";
+
 timer( obj,"T",1,kadets.get_duration(march),1.7 );
 
 
 ////////////////// music march
-import * as mus from "./music-march/init.js";
 mus.create( obj );
 
 ////////////////// step sounds
-import snd from "./sounds/init.js";
+
 snd( obj );
 
-//////////////////
+return obj;
+}
 
-vz.restoreFromHash();
 
+export function setup( vz ) {
+  vz.addItemType( "kadety","Kadet's march", function( opts ) {
+    return create( vz, opts );
+  } );
+}
