@@ -14,8 +14,9 @@ var obj = konv.convert( march, vz, opts.parent );
 
 ///////////////// env city
 
+var dir = vz.getDir( import.meta.url );
 var env = vz.vis.addGltf();
-env.setParam("src","models/VC.glb");
+env.setParam("src",dir+"/models/VC.glb");
 env.scale = 10;
 //env.positions = [-100,-500,0];
 obj.trackParam("T",function(){

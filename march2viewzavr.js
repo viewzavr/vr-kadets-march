@@ -6,7 +6,9 @@ export function convert( march,vz, parent ) {
    //root.vz.create_obj( {} )
    var obj = vz.create_obj( {},{parent:parent,name:"march"} );
    var pts = vz.vis.addGltfArray( obj, "kadets" );
-   pts.source = "models/Soldier.glb";
+   var dir = vz.getDir( import.meta.url );
+
+   pts.source = dir + "/models/Soldier.glb";
    obj.pts = pts;
 
    obj.addSlider( "T",0,0,kadets.get_duration(march),0.15,function(v) {

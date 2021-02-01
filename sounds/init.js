@@ -32,7 +32,7 @@ obj.trackParam("T",function() {
          //console.log("stepping",ii);
          var coords = [ obj.pts.positions[3*ii],obj.pts.positions[3*ii+1],obj.pts.positions[3*ii+2] ];
          stepplaying[ii] = true;
-         vz.vis.playSound3d( coords, file,function(snd) {
+         obj.vz.vis.playSound3d( coords, file,function(snd) {
            snd.setVolume( vol ); //  console.log("vol",vol);
           //snd.play(-2);
           //snd.setPlaybackRate(1.5);
