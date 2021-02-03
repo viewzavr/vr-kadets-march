@@ -7,6 +7,8 @@ import snd from "./sounds/init.js";
 
 export function create( vz,opts ) {
 
+
+
 var march = program( kadets );
 //console.log("MARCH=",march);
 
@@ -44,4 +46,6 @@ export function setup( vz ) {
   vz.addItemType( "kadety","Kadet's march", function( opts ) {
     return create( vz, opts );
   } );
+  // todo maybe it is better to work with vz, not with vzPlayer?.......
+  return vzPlayer.loadModuleByCode( "vis-comps" );
 }
