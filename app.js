@@ -7,38 +7,34 @@ import snd from "./sounds/init.js";
 
 export function create( vz,opts ) {
 
+  var march = program( kadets );
+  //console.log("MARCH=",march);
+
+  var obj = konv.convert( march, vz, opts.parent );
+
+  ///////////////// env city
+
+  var dir = vz.getDir( import.meta.url );
+  var env = vz.vis.addGltf();
+  env.setParam("src",dir+"/models/VC.glb");
+  env.scale = 10;
+  //env.positions = [-100,-500,0];
+  obj.trackParam("T",function(){
+    //env.setParam("animation_0", obj.getParam("T") );
+  })
+
+  //////////////////
+  // thus this block is a feature; in contrast with snd, where snd is feature
+  timer( obj,"T",1,kadets.get_duration(march),1.7 );
 
 
-var march = program( kadets );
-//console.log("MARCH=",march);
+  ////////////////// music march
+  mus.create( obj );
 
-var obj = konv.convert( march, vz, opts.parent );
+  ////////////////// step sounds
+  snd( obj );
 
-///////////////// env city
-
-var dir = vz.getDir( import.meta.url );
-var env = vz.vis.addGltf();
-env.setParam("src",dir+"/models/VC.glb");
-env.scale = 10;
-//env.positions = [-100,-500,0];
-obj.trackParam("T",function(){
-  //env.setParam("animation_0", obj.getParam("T") );
-})
-
-//////////////////
-// thus this block is a feature; in contrast with snd, where snd is feature
-
-timer( obj,"T",1,kadets.get_duration(march),1.7 );
-
-
-////////////////// music march
-mus.create( obj );
-
-////////////////// step sounds
-
-snd( obj );
-
-return obj;
+  return obj;
 }
 
 
@@ -47,5 +43,7 @@ export function setup( vz ) {
     return create( vz, opts );
   } );
   // todo maybe it is better to work with vz, not with vzPlayer?.......
+  // but it is correct to ask for modules here, not in html, because who knows which player will play this component..
+  // but in that case, probably it is not a great idea to work with player at all?....
   return vzPlayer.loadModuleByCode( "vis-comps" );
 }
