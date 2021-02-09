@@ -45,5 +45,5 @@ export function setup( vz ) {
   // todo maybe it is better to work with vz, not with vzPlayer?.......
   // but it is correct to ask for modules here, not in html, because who knows which player will play this component..
   // but in that case, probably it is not a great idea to work with player at all?....
-  return vzPlayer.loadModuleByCode( "vis-comps" );
+  return vzPlayer.loadPackageByCode( "vis-comps" );
 }
